@@ -1,0 +1,23 @@
+<p>user-detail works!</p>
+<div class="user-detail" *ngIf="user">
+  <h1>{{ user.name }}</h1>
+  <p><strong>Email:</strong> {{ user.email }}</p>
+  <p><strong>Username:</strong> {{ user.username }}</p>
+  <p><strong>Phone:</strong> {{ user.phone }}</p>
+  <p><strong>website:</strong> <a href="http://{{ user.website }}" target="_blank">{{ user.website }}</a></p>
+  
+  <h3>address</h3>
+  <p>
+    {{ user.address.suite }}, {{ user.address.street }}<br />
+    {{ user.address.city }}, {{ user.address.zipcode }}<br />
+    <strong>geo:</strong> ({{ user.address.geo.lat }}, {{ user.address.geo.lng }})
+  </p>
+
+  <h3>Company</h3>
+  <p>
+    <strong>Name:</strong> {{ user.company.name }}<br />
+    <strong>Catchphrase:</strong> {{ user.company.catchPhrase }}<br />
+    <strong>BS:</strong> {{ user.company.bs }}
+  </p>
+</div>
+
