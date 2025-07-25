@@ -1,34 +1,28 @@
-<p>dashboard works!</p>
-<div class="dashboard">
-  <h1>User Directory</h1>
+<!-- <p>dashboard works!</p> -->
 
-  <div class="search-sort">
-    <input
-      type="text"
-      [(ngModel)]="searchTerm"
-      placeholder="Search by name or email"
-      (input)="filterUsers()"
-    />
-    <button (click)="sortUsers('name')">Sort by Name</button>
-    <button (click)="sortUsers('company.name')">Sort by Company</button>
-  </div>
+<h1>User Directory</h1>
 
-  <table>
-    <thead>
-      <tr>
-        <th>Name</th>
-        <th>Email</th>
-        <th>Phone</th>
-        <th>Company Name</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr *ngFor="let user of filteredUsers; trackBy: trackById" (click)="navigateToDetail(user.id)">
-        <td>{{ user?.name }}</td>
-        <td>{{ user?.email }}</td>
-        <td>{{ user?.phone }}</td>
-        <td>{{ user?.company?.name }}</td>
-      </tr>
-    </tbody>
-  </table>
-</div>
+<ng-container *ngIf="loading">Loading...</ng-container>
+<app-search-sort
+  (searchChange)="onSearchChange($event)"
+  (sortChange)="onSortChange($event)">
+</app-search-sort>
+
+<table border="1" cellpadding="8" cellspacing="0" >
+  <thead>
+    <tr>
+      <th>Name</th>
+      <th>Email</th>
+      <th>Phone</th>
+      <th>Company Name</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let user of filteredUsers; trackBy: trackById" (click)="navigateToDetail(user.id)">
+      <td>{{ user?.name }}</td>
+      <td>{{ user?.email }}</td>
+      <td>{{ user?.phone }}</td>
+      <td>{{ user?.company?.name }}</td>
+    </tr>
+  </tbody>
+</table>

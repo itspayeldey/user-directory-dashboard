@@ -4,6 +4,7 @@ import { User } from '../../user.model';
 import { UserService } from '../../myservices/user.service';
 import { FormsModule } from '@angular/forms';
 import { CommonModule } from '@angular/common';
+import { SearchSortComponent } from '../search-sort/search-sort.component';
 
 
 @Component({
@@ -11,13 +12,14 @@ import { CommonModule } from '@angular/common';
   templateUrl: './dashboard.component.html',
   styleUrls: ['./dashboard.component.css'],
   standalone: true,
-  imports: [FormsModule,CommonModule]
+  imports: [FormsModule,CommonModule,SearchSortComponent]
 })
 export class DashboardComponent implements OnInit {
   users: User[] = [];
   filteredUsers: User[] = [];
   searchTerm: string = '';
   sortDirection: boolean = true; // true for ascending
+  loading: boolean = true; // Loading state
 
   constructor(private userService: UserService, private router: Router) { }
 
@@ -25,6 +27,7 @@ export class DashboardComponent implements OnInit {
     this.userService.getUsers().subscribe(users => {
       this.users = users;
       this.filteredUsers = users; // Initialize filtered users
+      this.loading = false; // Set loading to false after data is fetched
     });
   }
 

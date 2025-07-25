@@ -1,23 +1,39 @@
-<p>user-detail works!</p>
-<div class="user-detail" *ngIf="user">
+
+
+ <div  *ngIf="user">
   <h1>{{ user?.name }}</h1>
-  <p><strong>Email:</strong> {{ user?.email }}</p>
-  <p><strong>Username:</strong> {{ user?.username }}</p>
-  <p><strong>Phone:</strong> {{ user?.phone }}</p>
-  <p><strong>website:</strong> <a href="http://{{ user?.website }}" target="_blank">{{ user?.website }}</a></p>
-  
-  <h3>address</h3>
-  <p>
-    {{ user?.address?.suite }}, {{ user?.address?.street }}<br />
-    {{ user?.address?.city }}, {{ user?.address?.zipcode }}<br />
-    <strong>geo:</strong> ({{ user?.address?.geo?.lat }}, {{ user?.address?.geo?.lng }})
-  </p>
-
-  <h3>Company</h3>
-  <p>
-    <strong>Name:</strong> {{ user?.company?.name }}<br />
-    <strong>Catchphrase:</strong> {{ user?.company?.catchPhrase }}<br />
-    <strong>BS:</strong> {{ user?.company?.bs }}
-  </p>
+  <table border="1" cellpadding="8" cellspacing="0">
+    <tr>
+      <th>Email</th>
+      <td>{{ user?.email }}</td>
+    </tr>
+    <tr>
+      <th>Username</th>
+      <td>{{ user?.username }}</td>
+    </tr>
+    <tr>
+      <th>Phone</th>
+      <td>{{ user?.phone }}</td>
+    </tr>
+    <tr>
+      <th>Website</th>
+      <td><a href="http://{{ user?.website }}" target="_blank">{{ user?.website }}</a></td>
+    </tr>
+    <tr>
+      <th>Address</th>
+      <td>
+        {{ user?.address?.suite }}, {{ user?.address?.street }}<br />
+        {{ user?.address?.city }}, {{ user?.address?.zipcode }}<br />
+        <strong>Geo:</strong> ({{ user?.address?.geo?.lat }}, {{ user?.address?.geo?.lng }})
+      </td>
+    </tr>
+    <tr>
+      <th>Company</th>
+      <td>
+        <strong>Name:</strong> {{ user?.company?.name }}<br />
+        <strong>Catchphrase:</strong> {{ user?.company?.catchPhrase }}<br />
+        <strong>BS:</strong> {{ user?.company?.bs }}
+      </td>
+    </tr>
+  </table>
 </div>
-
